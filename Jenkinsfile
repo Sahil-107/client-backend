@@ -16,10 +16,10 @@ pipeline {
                 sshagent(['ec2-ssh-credentials']) {
                     sh '''
                           # Copy WAR file to the second EC2 instance
-                          scp target/*.war ec2-user@54.81.67.19:/opt/tomcat/webapps/
+                          scp target/*.war ec2-user@3.81.205.195:/opt/tomcat/webapps/
 
                           # Restart Tomcat on that instance
-                          ssh ubuntu@54.81.67.19 "sudo systemctl restart tomcat"
+                          ssh ec2-user@3.81.205.195 "sudo systemctl restart tomcat"
                        '''
                 }
             }
